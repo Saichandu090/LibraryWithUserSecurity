@@ -1,9 +1,6 @@
 package com.chandu.spring.security.second.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,14 +19,12 @@ public class BookRequestDTO
     private String author;
 
     @Min(value = 2)
-    @NotBlank
     private Integer quantity;
 
     @Min(value = 100)
     @Max(value = 1000)
-    @NotBlank
     private Double price;
 
-    @NotBlank
+    @NotNull
     private List<String> genre;
 }

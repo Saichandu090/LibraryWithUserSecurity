@@ -3,6 +3,7 @@ package com.chandu.spring.security.second.controller;
 import com.chandu.spring.security.second.dto.BookRequestDTO;
 import com.chandu.spring.security.second.dto.BookResponseDTO;
 import com.chandu.spring.security.second.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class BookController
     }
 
     @PostMapping("/addBook")
-    public ResponseEntity<BookResponseDTO> addBook(@RequestBody BookRequestDTO requestDTO)
+    public ResponseEntity<BookResponseDTO> addBook(@Valid @RequestBody BookRequestDTO requestDTO)
     {
         return new ResponseEntity<BookResponseDTO>(bookService.addBook(requestDTO), HttpStatus.CREATED);
     }
@@ -42,7 +43,7 @@ public class BookController
     }
 
     @PutMapping("/updateBook")
-    public ResponseEntity<BookResponseDTO> updateBook(@PathVariable int id,@RequestBody BookRequestDTO requestDTO)
+    public ResponseEntity<BookResponseDTO> updateBook(@PathVariable int id,@Valid @RequestBody BookRequestDTO requestDTO)
     {
         return new ResponseEntity<BookResponseDTO>(bookService.updateBook(id,requestDTO),HttpStatus.ACCEPTED);
     }
